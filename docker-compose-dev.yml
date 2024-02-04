@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  ## placeholder for front end Web server
+  # frontend:
+  #   build:
+  #     context: .
+  #     dockerfile: FrontendDev.Dockerfile
+  #     # target: development
+  #   container_name: ts-webserver-dev
+  #   restart: unless-stopped
+  #   ports:
+  #     - 8081:3000
+  #     - 4443:443
+  #   volumes:
+  #     - ./frontend:/app
+  #     - ./frontend/src:/app/src
+  #     - ./frontend/public:/app/public
+
+  api: #defines the api container
+    build:
+      context: . #uses current folder
+      dockerfile: BackendDev.Dockerfile
+    container_name: ts-api-dev
+    environment:
+      TZ: America/Toronto
+    ports: # map host port to container port
+      - 8080:4000
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/scratch_data_tmp:/app/scratch_data_tmp
+
+  db:
+    build:
+      context: . #uses current folder
+      dockerfile: Database.Dockerfile
+    container_name: ts-mongodb
+    restart: unless-stopped
+    # command: mongod --auth
+    environment: # set required env variables to access mongo
+      MONGO_INITDB_ROOT_USERNAME: ${DATABASE_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+      TZ: America/Toronto
+    ports: # map host port to container port
+      - 27117:27017
+    volumes: # optional to preserve database after container is deleted.
+      - ./db-data:/data/db

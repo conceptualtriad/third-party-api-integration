@@ -1,0 +1,7 @@
+node_modules
+npm-debug.log
+*.tmp*
+*_tmp
+notes.md
+**/.git
+**/npm-debug.log
