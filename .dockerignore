@@ -3,5 +3,6 @@ npm-debug.log
 *.tmp*
 *_tmp
 notes.md
+db-data
 **/.git
 **/npm-debug.log
