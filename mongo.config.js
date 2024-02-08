@@ -1,15 +1,16 @@
 // optionally disable mongo telemetry
 disableTelemetry(),
 	// create database
-	(db = new Mongo().getDB('$DATABASE_NAME')),
+	// (db = new Mongo().getDB('aus-teamsupport')),
+	(db = db.getSiblingDB(process.env.MONGO_INITDB_DATABASE)),
 	// create user
 	db.createUser({
-		user: '$DATABASE_USER',
-		pwd: '$DATABASE_PASSWORD',
+		user: process.env.DATABASE_USER,
+		pwd: process.env.DATABASE_PASSWORD,
 		roles: [
 			{
 				role: 'readWrite',
-				db: '$DATABASE_NAME'
+				db: process.env.MONGO_INITDB_DATABASE
 			}
 		]
 	})

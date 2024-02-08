@@ -11,10 +11,10 @@ dotenv.config()
 await mongoose.connect(
 	`mongodb://${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}`,
 	{
-		authSource: 'aus-teamsupport',
+		authSource: process.env.DATABASE_NAME,
 		user: process.env.DATABASE_USER,
 		pass: process.env.DATABASE_PASSWORD,
-		dbName: 'aus-teamsupport'
+		dbName: process.env.DATABASE_NAME
 	}
 )
 
