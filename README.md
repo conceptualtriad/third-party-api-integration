@@ -35,3 +35,5 @@ docker-compose -f docker-compose-dev.yml up --build
 ```
 
 Note that the **Actions** route can return a **very large number** of 3rd party API calls, and can max out the daily quota.
+
+* need Ubuntu 22.04

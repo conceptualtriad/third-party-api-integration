@@ -22,10 +22,10 @@ services:
       context: . #uses current folder
       dockerfile: BackendDev.Dockerfile
     container_name: ts-api-dev
-    environment:
-      TZ: America/Toronto
     env_file:
       - .env
+    environment:
+      TZ: America/Toronto
     ports: # map host port to container port
       - 8080:4000
     volumes:
@@ -41,13 +41,13 @@ services:
     container_name: ts-mongodb
     restart: unless-stopped
     command: mongod --auth
+    env_file:
+      - .env
     environment: # set required env variables to access mongo
       MONGO_INITDB_ROOT_USERNAME: ${DATABASE_ROOT_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
       MONGO_INITDB_DATABASE: ${DATABASE_NAME}
       TZ: America/Toronto
-    env_file:
-      - .env
     ports: # map host port to container port
       - 27117:27017
     volumes: # optional to preserve database after container is deleted.
@@ -59,4 +59,5 @@ services:
     ports:
       - 3001:3000
     volumes:
-      - ./metabase-data:/metabase-data
+      - ./metabase/metabase-data:/metabase-data
+      - ./metabase/metabase.db:/metabase.db
