@@ -1,11 +1,56 @@
 import mongoose from 'mongoose'
 
 const actionSchema = new mongoose.Schema(
-	{
-		// A single object contains data returned from 3rd party API
-		actionData: { type: Object }
-	},
-	{ collection: 'actions', timestamps: true } // documents include createdAt and updatedAt
+  {
+    // A single object contains data returned from 3rd party API
+    actionData: { type: Object },
+    ID: { type: Object },
+    ActionTypeID: { type: Object },
+    SystemActionTypeID: { type: Object },
+    Name: { type: Object },
+    Description: { type: Object },
+    TimeSpent: { type: Object },
+    DateStarted: { type: Object },
+    IsVisibleOnPortal: { type: Object },
+    IsKnowledgeBase: { type: Object },
+    DateCreated: { type: Object },
+    DateModified: { type: Object },
+    CreatorID: { type: Object },
+    ModifierID: { type: Object },
+    TicketID: { type: Object },
+    CreatorName: { type: Object },
+    ModifierName: { type: Object },
+    ActionType: { type: Object },
+    ProductName: { type: Object },
+    ReportedVersion: { type: Object },
+    SolvedVersion: { type: Object },
+    GroupName: { type: Object },
+    TicketType: { type: Object },
+    UserName: { type: Object },
+    Status: { type: Object },
+    StatusPosition: { type: Object },
+    SeverityPosition: { type: Object },
+    IsClosed: { type: Object },
+    Severity: { type: Object },
+    TicketNumber: { type: Object },
+    ReportedVersionID: { type: Object },
+    SolvedVersionID: { type: Object },
+    ProductID: { type: Object },
+    GroupID: { type: Object },
+    UserID: { type: Object },
+    TicketStatusID: { type: Object },
+    TicketTypeID: { type: Object },
+    TicketSeverityID: { type: Object },
+    OrganizationID: { type: Object },
+    TicketName: { type: Object },
+    DateClosed: { type: Object },
+    CloserID: { type: Object },
+    DaysClosed: { type: Object },
+    DaysOpened: { type: Object },
+    CloserName: { type: Object },
+    HoursSpent: { type: Object }
+  },
+  { collection: 'actions', timestamps: true } // documents include createdAt and updatedAt
 )
 
 export default mongoose.model('Action', actionSchema)
